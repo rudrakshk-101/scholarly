@@ -1,77 +1,91 @@
-import {useNavigate} from 'react-router-dom';
-import React, { useEffect, useState } from 'react'
-import Navbar from './Navbar'
-import ScholarshipDetail from './ScholarshipDetail'
-import './ScholarshipDetailCss.css'
-import Filter from './filterbar'
-import './filtercss.css'
-
+import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import Navbar from "./Navbar";
+import ScholarshipDetail from "./ScholarshipDetail";
+import "./ScholarshipDetailCss.css";
+import Filter from "./filterbar";
+import "./filtercss.css";
 
 const Home = () => {
   const naviagteTo = useNavigate();
-  let [array,setArray] = useState([]);
-  const [country,setCountry] = useState('');
-  const [gender,setGender] = useState('');
-  const [clss,setClss] = useState('');
-  let xyz = async () => {
-    let response = await fetch('http://localhost:4500/scholarhips/getAll',{
+  let [array, setArray] = useState([]);
+  const [country, setCountry] = useState("India");
+  const [gender, setGender] = useState("all");
+  const [clss, setClss] = useState("School");
+ 
+  let search = async() => {
+    let response = await fetch('http://localhost:4500/scholarhips/getByFilter',{
       method: 'POST',
-      headers: { "Content-Type": "application/json"},
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({class: clss,gender,country})
+    });
+    if(!response.ok) setArray([]);
+    let data = await response.json();
+    console.log(data.data);
+    setArray(data.data);
+ }
+
+  let xyz = async () => {
+    let response = await fetch("http://localhost:4500/scholarhips/getAll", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
     });
     let data = await response.json();
     console.log(data);
     setArray(data);
-    console.log(array)
-  }
+    console.log(array);
+  };
   useEffect(() => {
     xyz();
-  },[]);
+  }, []);
   return (
-    <div className='HomeContainer'>
+    <div className="HomeContainer">
       <Navbar />
-      {/* <Filter />
-      
-      filter bar attached
-      
-      */}
-
-
-<div className='filternavbar'>
+      <div className="filternavbar">
         <div id="search-form">
-    <select id="dropdown1" className='dropd'>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-    </select>
-    <select id="dropdown2" className='dropd'>
-        <option value="optionA">Option A</option>
-        <option value="optionB">Option B</option>
-    </select>
-    <select id="dropdown3" className='dropd'>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-    </select>
-    <button id='filterButton' onclick="search()">Search</button>
-</div>
-    </div>
-
-
+          <select
+            id="country"
+            className="dropd"
+            value={country}
+            onChange={(e) => {
+              setCountry(e.target.value);
+            }}
+          >
+            <option value="india">India</option>
+            <option value="Abroad">Abroad</option>
+          </select>
+          <select id="gender" className="dropd" value={gender}>
+            {" "}
+            onChange=
+            {(e) => {
+              setGender(e.target.value);
+            }}
+            <option value="all">All</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <select
+            id="class"
+            className="dropd"
+            value={clss}
+            onChange={(e) => {
+              setClss(e.target.value);
+            }}
+          >
+            <option value="school">School</option>
+            <option value="Undergraduate">Under Graduate</option>
+            <option value="PostGraduate">Post Graduate</option>
+          </select>
+          <button id="filterButton" onClick={() => search()}>
+            Search
+          </button>
+        </div>
+      </div>
       {array.map(ScholarshipDetail)}
-      {/* <ScholarshipDetail 
-        title = "Mp Government Scholarship"
-        description= "This is a scholarship detail and it is meant to be read by a student."
-        lastDate = "10/12/2023"
-        image="https://i.ibb.co/n6GrsNr/S.png"
-      />
-      <ScholarshipDetail />
-      <ScholarshipDetail />
-      <ScholarshipDetail />
-      <ScholarshipDetail />
-      <ScholarshipDetail />
-      <ScholarshipDetail />
-      <ScholarshipDetail /> */}
-
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

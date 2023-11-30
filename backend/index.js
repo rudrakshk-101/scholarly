@@ -128,6 +128,7 @@ app.post('/scholarhips/getByFilter',verifyAdmin,async(req,res)=> {
     const clss = req.body.class;
     const gender = req.body.gender;
     const country = req.body.country;
+    console.log(clss,gender,country);
     const data = await Scholarship.find({class: clss,gender,country});
     if(!data)
     {
