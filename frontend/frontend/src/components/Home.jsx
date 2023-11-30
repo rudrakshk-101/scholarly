@@ -36,6 +36,7 @@ const Home = () => {
       <ScholarshipDetail />
       <ScholarshipDetail />
       <ScholarshipDetail /> */}
+      
     </div>
   )
 }
