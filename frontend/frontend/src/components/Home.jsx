@@ -1,3 +1,4 @@
+import {useNavigate} from 'react-router-dom';
 import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import ScholarshipDetail from './ScholarshipDetail'
@@ -5,8 +6,13 @@ import './ScholarshipDetailCss.css'
 import Filter from './filterbar'
 import './filtercss.css'
 
+
 const Home = () => {
+  const naviagteTo = useNavigate();
   let [array,setArray] = useState([]);
+  const [country,setCountry] = useState('');
+  const [gender,setGender] = useState('');
+  const [clss,setClss] = useState('');
   let xyz = async () => {
     let response = await fetch('http://localhost:4500/scholarhips/getAll',{
       method: 'POST',
