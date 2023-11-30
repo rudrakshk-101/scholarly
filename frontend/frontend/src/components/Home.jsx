@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import ScholarshipDetail from './ScholarshipDetail'
 import './ScholarshipDetailCss.css'
-
+import Filter from './filterbar'
 
 const Home = () => {
   let [array,setArray] = useState([]);
@@ -22,6 +22,7 @@ const Home = () => {
   return (
     <div className='HomeContainer'>
       <Navbar />
+      <Filter />
       {array.map(ScholarshipDetail)}
       {/* <ScholarshipDetail 
         title = "Mp Government Scholarship"
@@ -36,7 +37,7 @@ const Home = () => {
       <ScholarshipDetail />
       <ScholarshipDetail />
       <ScholarshipDetail /> */}
-      
+
     </div>
   )
 }
