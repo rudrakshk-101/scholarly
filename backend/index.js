@@ -24,7 +24,10 @@ const scholarSchema = new mongoose.Schema({
     title: String,
     description: String,
     lastDate: String,
-    category: String
+    category: String,
+    class: String,
+    gender: String,
+    country: String
 });
 
 const User = mongoose.model('User',userSchema);
@@ -89,7 +92,10 @@ app.post('/scholarships/create',verifyAdmin,async(req,res)=> {
     const image = req.body.image;
     const category = req.body.category;
     const lastDate = req.body.lastDate;
-    const json = {title,description,image,lastDate,category};
+    const clss = req.body.class;
+    const gender = req.body.gender;
+    const country = req.body.country;
+    const json = {title,description,image,lastDate,category,gender,country,class: clss};
     const newScholar = new Scholarship(json);
     await newScholar.save();
     return res.json({
@@ -118,6 +124,23 @@ app.post('/scholarhips/getByTitle',verifyAdmin,async(req,res)=> {
     }
 });
 
+app.post('/scholarhips/getByFilter',verifyAdmin,async(req,res)=> {
+    const clss = req.body.class;
+    const gender = req.body.gender;
+    const country = req.body.country;
+    const data = await Scholarship.find({class: clss,gender,country});
+    if(!data)
+    {
+        return res.json({
+            message: "No Scholarships found with these filters"
+        })
+    }
+    else
+    {
+        return res.json({data});
+    }
+})
+
 app.post('/scholarhips/getByCategory',verifyAdmin,async(req,res)=> {
     const category = req.body.category;
     const data = await Scholarship.findOne({category});
@@ -139,6 +162,9 @@ app.post('/scholarhips/updateByTitle',verifyAdmin,async(req,res)=> {
     const image = req.body.image;
     const lastDate = req.body.lastDate;
     const category = req.body.category;
+    const clss = req.body.class;
+    const gender = req.body.gender;
+    const country = req.body.country;
     const existingScholarship = await Scholarship.findOne({title});
     if(!existingScholarship) return res.json({
         message: "Scholarship not found"
@@ -146,7 +172,10 @@ app.post('/scholarhips/updateByTitle',verifyAdmin,async(req,res)=> {
     existingScholarship.lastDate = lastDate;
     existingScholarship.description = description;
     existingScholarship.image=image;
-    existingScholarship.category=category
+    existingScholarship.category=category;
+    existingScholarship.class = clss;
+    existingScholarship.gender = gender;
+    existingScholarship.country = country;
     await existingScholarship.save();
     return res.json({
         title: title,

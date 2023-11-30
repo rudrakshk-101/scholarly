@@ -1,13 +1,13 @@
 import React from 'react'
 import './ScholarshipDetailCss.css'
 
-const ScholarshipDetail = () => {
+const ScholarshipDetail = (props) => {
   return (
       <div class="card">
-    <div class="card-image"></div>
-    <div class="category"> Central Sector </div>
-    <div class="heading"> Scholarship provided to students of OBC caste.
-        <div class="author"><span class="name">Last Date :</span> 29-01-24</div>
+    <div class="card-image"><img height={130} width={190} src={props.image} alt="" /></div>
+    <div class="category">{props.title}</div>
+    <div class="heading">{props.description}
+        <div class="author"><span class="name">Last Date :</span>{props.lastDate}</div>
     </div>
 </div>
   )
