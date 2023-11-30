@@ -20,6 +20,7 @@ body{
   .card:hover
   {
     transform: scale(1.5);
+    background-color: rgb(179, 179, 179);
   }
   
   .card-image {
