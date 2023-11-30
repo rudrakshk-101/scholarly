@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import ScholarshipDetail from './ScholarshipDetail'
 import './ScholarshipDetailCss.css'
 import Filter from './filterbar'
+import './filtercss.css'
 
 const Home = () => {
   let [array,setArray] = useState([]);
@@ -22,7 +23,32 @@ const Home = () => {
   return (
     <div className='HomeContainer'>
       <Navbar />
-      <Filter />
+      {/* <Filter />
+      
+      filter bar attached
+      
+      */}
+
+
+<div className='filternavbar'>
+        <div id="search-form">
+    <select id="dropdown1" className='dropd'>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+    </select>
+    <select id="dropdown2" className='dropd'>
+        <option value="optionA">Option A</option>
+        <option value="optionB">Option B</option>
+    </select>
+    <select id="dropdown3" className='dropd'>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+    </select>
+    <button id='filterButton' onclick="search()">Search</button>
+</div>
+    </div>
+
+
       {array.map(ScholarshipDetail)}
       {/* <ScholarshipDetail 
         title = "Mp Government Scholarship"

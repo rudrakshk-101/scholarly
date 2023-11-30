@@ -24,8 +24,9 @@
 .dropd
 {
     width: 15vw;
-    height: 35px;
+    height: 35px;;
     margin: 0 13px;
+    margin-top: 5px;
     transform: scale(1.2);
     border-radius: 15px;
 }
