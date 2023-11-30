@@ -144,7 +144,7 @@ app.post('/scholarhips/getByFilter',verifyAdmin,async(req,res)=> {
 
 app.post('/scholarhips/getByCategory',verifyAdmin,async(req,res)=> {
     const category = req.body.category;
-    const data = await Scholarship.findOne({category});
+    const data = await Scholarship.find({category});
     if(data)
     {
         return res.json(data);
