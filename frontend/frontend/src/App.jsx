@@ -6,12 +6,14 @@ import Home from './components/Home'
 import AddScholarship from './components/AddScholarship'
 import DeleteScholarship from './components/DeleteScholarship'
 import UpdateScholarship from './components/UpdateScholarship'
+import MasterHome from './components/MasterHome'
 
 const App = () => {
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Home />} />
+      <Route path='/' element={<MasterHome />} />
+        <Route path='/viewAll' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/admin/addScholarship' element={<AddScholarship />} />
