@@ -56,12 +56,12 @@ let navigateTo = useNavigate();
     </div></Link>
       {/* cardstart */}
       <Link to={'/means'}><div class="card">
-    <div class="card-image"><img height={130} width={190} src={"https://d2w7l1p59qkl0r.cloudfront.net/static/images/best-fit33-new.jpg"} alt="" /></div>
+    <div class="card-image"><img height={130} width={190} src={"https://d2w7l1p59qkl0r.cloudfront.net/static/images/best-fit1-new.jpg"} alt="" /></div>
     <div class="category">Means</div>
     </div></Link>
       {/* cardstart */}
       <Link to={'/international'}><div class="card">
-    <div class="card-image"><img height={130} width={190} src={"https://d2w7l1p59qkl0r.cloudfront.net/static/images/best-fit33-new.jpg"} alt="" /></div>
+    <div class="card-image"><img height={130} width={190} src={"https://d2w7l1p59qkl0r.cloudfront.net/static/images/best-fit6-new.jpg"} alt="" /></div>
     <div class="category">International</div>
     </div></Link>
     <p className="masterp">or</p>
