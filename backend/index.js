@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 4500;
+const port = process.env.PORT || 4500;
 const secret = 'abcdefgh';
 
 
