@@ -23,7 +23,8 @@ const scholarSchema = new mongoose.Schema({
     image: String,
     title: String,
     description: String,
-    lastDate: String
+    lastDate: String,
+    category: String
 });
 
 const User = mongoose.model('User',userSchema);
@@ -86,8 +87,9 @@ app.post('/scholarships/create',verifyAdmin,async(req,res)=> {
     const title = req.body.title;
     const description = req.body.description;
     const image = req.body.image;
+    const category = req.body.category;
     const lastDate = req.body.lastDate;
-    const json = {title,description,image,lastDate};
+    const json = {title,description,image,lastDate,category};
     const newScholar = new Scholarship(json);
     await newScholar.save();
     return res.json({
@@ -116,11 +118,27 @@ app.post('/scholarhips/getByTitle',verifyAdmin,async(req,res)=> {
     }
 });
 
+app.post('/scholarhips/getByCategory',verifyAdmin,async(req,res)=> {
+    const category = req.body.category;
+    const data = await Scholarship.findOne({category});
+    if(data)
+    {
+        return res.json(data);
+    }
+    else
+    {
+        return res.json({
+            message: `Scholarship not found with category : ${category}`
+        });
+    }
+});
+
 app.post('/scholarhips/updateByTitle',verifyAdmin,async(req,res)=> {
     const title = req.body.title;
     const description = req.body.description;
     const image = req.body.image;
     const lastDate = req.body.lastDate;
+    const category = req.body.category;
     const existingScholarship = await Scholarship.findOne({title});
     if(!existingScholarship) return res.json({
         message: "Scholarship not found"
@@ -128,6 +146,7 @@ app.post('/scholarhips/updateByTitle',verifyAdmin,async(req,res)=> {
     existingScholarship.lastDate = lastDate;
     existingScholarship.description = description;
     existingScholarship.image=image;
+    existingScholarship.category=category
     await existingScholarship.save();
     return res.json({
         title: title,
