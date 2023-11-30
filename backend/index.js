@@ -35,6 +35,12 @@ const Scholarship = mongoose.model('Scholarship',scholarSchema);
 
 const verifyAdmin = (req,res,next) => {next()}
 
+app.get('/',(req,res)=> {
+    res.json({
+        message:"Heeeeeeeeee"
+    })
+})
+
 app.post('/register',async(req,res) => {
     const username = req.body.username;
     const gmail = req.body.gmail;
