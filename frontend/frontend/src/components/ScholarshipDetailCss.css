@@ -13,14 +13,14 @@ body{
     margin-left: 20px;
     margin-top: 15px;
     /* margin-bottom: ; */
-    border: 2px solid white;
+    border: 2px solid black;
     transition: transform 0.5s ease;
   }
 
   .card:hover
   {
     transform: scale(1.5);
-    background-color: rgb(179, 179, 179);
+    background-color: rgb(22, 159, 233);
   }
   
   .card-image {
@@ -38,7 +38,7 @@ body{
     text-transform: uppercase;
     font-size: 0.7em;
     font-weight: 600;
-    color: midnightblue;
+    color: rgb(4, 8, 15);
     padding: 10px 7px 0;
   }
   
@@ -48,12 +48,13 @@ body{
   
   .heading {
     font-weight: 600;
-    color: rgb(88, 87, 87);
+    color: black
     padding: 7px;
   }
   
   .heading:hover {
     cursor: pointer;
+    color: whitesmoke;
   }
   
   .author {
@@ -69,4 +70,4 @@ body{
   
   .name:hover {
     cursor: pointer;
-  } 
+  }
