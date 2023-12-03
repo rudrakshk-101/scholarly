@@ -87,7 +87,7 @@ app.post('/login',async(req,res)=> {
     }
     const token = jwt.sign(json,secret);
     return res.json({
-        message: "Registration successful",
+        message: "Login successful",
         token: token
     });
 })
