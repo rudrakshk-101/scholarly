@@ -16,7 +16,7 @@ const MasterHome = () => {
   const [clss, setClss] = useState("School");
  
   let search = async() => {
-    let response = await fetch('http://localhost:4500/scholarhips/getByFilter',{
+    let response = await fetch('https://scholarlybackend.adaptable.app/scholarhips/getByFilter',{
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -30,7 +30,7 @@ const MasterHome = () => {
  }
 
   let xyz = async () => {
-    let response = await fetch("http://localhost:4500/scholarhips/getAll", {
+    let response = await fetch("https://scholarlybackend.adaptable.app/scholarhips/getAll", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     });

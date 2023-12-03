@@ -4,7 +4,7 @@ import ScholarshipDetail from './ScholarshipDetail'
 const MeansView = () => {
     let [array,setArray] = useState([]);
     let xyz = async() => {
-        let response = await fetch('http://localhost:4500/scholarhips/getByCategory',{
+        let response = await fetch('https://scholarlybackend.adaptable.app/scholarhips/getByCategory',{
             method: "POST",
             "headers": {
                 "Content-Type": "application/json"

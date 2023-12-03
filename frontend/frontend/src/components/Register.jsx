@@ -9,7 +9,7 @@ const Register = () => {
 	const [gmail,setGmail] = useState('');
 	const [error,setError] = useState('');
 	const handleRegister = async() => {
-		const response = await fetch('http://localhost:4500/register',{
+		const response = await fetch('https://scholarlybackend.adaptable.app/register',{
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json'},
 			body: JSON.stringify({username,gmail,password})
