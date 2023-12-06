@@ -24,7 +24,7 @@ Explore the live demo: [Live Demo Link](link-to-live-demo)
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/jatinsahijwani/scholarly.git
+   git clone https://github.com/rudrakshk-101/scholarly.git
    ```
 2. **Install dependencies:**
    ```bash
